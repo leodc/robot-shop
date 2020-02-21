@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: robotshop/rs-mysql-db:latest
+        image: imleo/robotshop-mysql:latest
         # added for Istio
         securityContext:
           capabilities:

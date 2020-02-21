@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: cart
-        image: robotshop/rs-cart:latest
+        image: imleo/robotshop-cart:latest
         # agent networking access 
         env:
           - name: INSTANA_AGENT_HOST

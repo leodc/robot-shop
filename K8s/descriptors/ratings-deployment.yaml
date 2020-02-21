@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ratings
-        image: robotshop/rs-ratings:latest
+        image: imleo/robotshop-ratings:latest
         ports:
         - containerPort: 80
         resources:

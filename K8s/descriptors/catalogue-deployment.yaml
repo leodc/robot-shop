@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: robotshop/rs-catalogue:latest
+        image: imleo/robotshop-catalogue:latest
         env:
           - name: INSTANA_AGENT_HOST
             valueFrom:

@@ -2,7 +2,7 @@ version: '3'
 services:
   mongodb:
     build:
-      context: mongo
+      context: mongodb
     image: ${REPO}/rs-mongodb:${TAG}
     networks:
       - robot-shop
@@ -42,7 +42,7 @@ services:
   mysql:
     build:
       context: mysql
-    image: ${REPO}/rs-mysql-db:${TAG}
+    image: ${REPO}/rs-mysql:${TAG}
     cap_add:
       - NET_ADMIN
     networks:

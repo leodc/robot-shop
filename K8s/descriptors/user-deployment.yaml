@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: robotshop/rs-user:latest
+        image: imleo/robotshop-user:latest
         env:
           # agent networking access
           - name: INSTANA_AGENT_HOST

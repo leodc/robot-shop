@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: payment
-        image: robotshop/rs-payment:latest
+        image: imleo/robotshop-payment:latest
         # agent networking access
         env:
           - name: INSTANA_AGENT_HOST

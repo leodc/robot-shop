@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dispatch
-        image: robotshop/rs-dispatch:latest
+        image: imleo/robotshop-dispatch:latest
         env:
           # agent networking access
           - name: INSTANA_AGENT_HOST

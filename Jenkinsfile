@@ -1,8 +1,4 @@
 pipeline {
-    environment {
-        timestamp = "${sh(script:'date +%d%m%Y-%H%M%S', returnStdout: true).trim()}"
-    }
-
     agent any
 
     stages {
@@ -29,9 +25,9 @@ pipeline {
 
                             if ( microservice != "$BRANCH_NAME" && microservice != "" && fileExists("$microservice/Dockerfile") && !buildedMicroservices.contains( microservice ) ) {
                                 image = docker.build("imleo/robotshop-$microservice", "$microservice")
-                                image.push( timestamp )
+                                image.push( "$BRANCH_NAME-$GIT_COMMIT" )
 
-                                sh "hub pull-request -m 'Created from Jenkins' --base master --head $BRANCH_NAME"
+                                sh "hub pull-request --no-edit --base master --head $BRANCH_NAME"
 
                                 buildedMicroservices.add( microservice )
                             }
@@ -59,9 +55,9 @@ pipeline {
 
                             if ( fileExists("$microservice/Dockerfile") && !buildedMicroservices.contains( microservice )) {
                                 image = docker.build("imleo/robotshop-$microservice", "$microservice")
-                                image.push( timestamp )
+                                image.push( "$GIT_COMMIT" )
 
-                                sh "kubectl -n $ROBOT_SHOP_NAMESPACE set image deployments/$microservice $microservice=imleo/robotshop-$microservice:$timestamp"
+                                sh "kubectl -n $ROBOT_SHOP_NAMESPACE set image deployments/$microservice $microservice=imleo/robotshop-$microservice:$GIT_COMMIT"
 
                                 buildedMicroservices.add( microservice )
                             }

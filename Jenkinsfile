@@ -32,7 +32,7 @@ pipeline {
                         }
 
                         if( !buildedMicroservices.isEmpty() ){
-                            sh "hub pull-request --no-edit --base master --head $BRANCH_NAME"
+                            sh "hub pull-request -m 'Created from jenkins' --base master --head $BRANCH_NAME"
                         }
                     }
 

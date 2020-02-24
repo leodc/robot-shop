@@ -59,7 +59,8 @@ pipeline {
                                 image = docker.build("imleo/robotshop-$microservice", "$microservice")
                                 image.push( "$GIT_COMMIT" )
 
-                                sh "kubectl -n $ROBOT_SHOP_NAMESPACE set image deployments/$microservice $microservice=imleo/robotshop-$microservice:$GIT_COMMIT"
+                                sh "sed -i 's|image: imleo/robotshop-.*|image: imleo/robotshop-$microservice:$GIT_COMMIT|g' K8s/descriptors/$microservice-deployment.yaml"
+                                sh "kubectl -n $ROBOT_SHOP_NAMESPACE apply -f K8s/descriptors/$microservice-deployment.yaml"
 
                                 buildedMicroservices.add( microservice )
                             }

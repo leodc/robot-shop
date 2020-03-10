@@ -82,6 +82,8 @@ pipeline {
                 branch "master"
             }
             steps{
+                sh 'eval $DOCKER_LOGIN_CMD'
+
                 script {
                     slackSend message: "Job Started - ${env.JOB_NAME} - Build #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 

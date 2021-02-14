@@ -1,15 +1,23 @@
-Set modifiedServices = []
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage("Test"){
-        }
-
-        stage("Build"){
-        }
-        
-        stage("Deploy") {
-        }
+  stages {
+    stage("Test"){
+      steps{
+        print "Testing... ok"
+      }
     }
+
+    stage("Build"){
+      steps{
+        print "Building... ok"
+      }
+    }
+
+    stage("Deploy") {
+      steps{
+        print "Deploy... ok"
+      }
+    }
+  }
 }
